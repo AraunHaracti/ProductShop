@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AddProductWindow.axaml" value="ProductShop.csproj" />
+        <entry key="EditProductWindow.axaml" value="ProductShop.csproj" />
+        <entry key="MainWindow.axaml" value="ProductShop.csproj" />
+        <entry key="ProductsWindow.axaml" value="ProductShop.csproj" />
+        <entry key="WelcomeWindow.axaml" value="ProductShop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

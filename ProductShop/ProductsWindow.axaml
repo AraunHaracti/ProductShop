@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ProductShop.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:DataType="vm:ProductsViewModel"
+        x:Class="ProductShop.ProductsWindow"
+        Title="ProductsWindow">
+  <Window.DataContext>
+    <vm:ProductsViewModel/>
+  </Window.DataContext>  
+  
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="300"/>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="100"/>
+    </Grid.ColumnDefinitions>
+    <Border Grid.Row="0" Grid.Column="2" Background="Blue">
+      <StackPanel Orientation="Vertical">
+        <TextBlock Text="{Binding Account.FirstName}" FontSize="12"/>
+        <TextBlock Text="{Binding Account.MiddleName}" FontSize="12"/>
+        <TextBlock Text="{Binding Account.LastName}" FontSize="12"/>
+      </StackPanel>
+    </Border>
+    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="LightBlue">
+      <TextBlock Text="LOGO" HorizontalAlignment="Center" Foreground="Red"/>
+    </Border>    
+    <Border Grid.Row="1" Grid.Column="0">
+      <Grid x:Name="ActionWithProductsGrid" Background="Brown">
+        <Button x:Name="AddBtn" Content="Добавить" Click="AddBtn_OnClick" Width="200"/>
+        <Button x:Name="EditBtn" Content="Редактировать" Click="EditBtn_OnClick" Width="200"/>
+      </Grid>
+      
+    </Border>
+    <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+      <ListBox x:Name="ProductsList" HorizontalAlignment="Center" ItemsSource="{Binding ProductsList}" >
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid Background="Aquamarine">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Border Grid.Column="0" Background="Beige" Margin="10">
+                <Image Source="{Binding ProductPhoto}"/>
+              </Border>
+              <Border Grid.Column="1" Grid.Row="1" Margin="10">
+                <StackPanel Background="Coral">
+                  <TextBlock Text="{Binding ProductName}" FontSize="18" />
+                  <TextBlock Text="{Binding ProductDescription}" FontSize="18" MaxLines=""/>
+                  <TextBlock Text="{Binding ProductManufacturer}" FontSize="18"/>
+                  <TextBlock Text="{Binding ProductPrice}" FontSize="18"/>
+                </StackPanel>
+              </Border>
+              <Border Grid.Column="2" Background="Chartreuse" Margin="10">
+                <TextBlock Text="{Binding ProductCount}" FontSize="20" FontFamily="Arial" TextAlignment="Center" VerticalAlignment="Center"/>
+              </Border>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel ItemWidth="800" ItemHeight="180" Orientation="Vertical"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+      </ListBox>
+    </Border>
+  </Grid>
+</Window>

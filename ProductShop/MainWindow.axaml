@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        Width="400" Height="300"
+        CanResize="False"
+        x:Class="ProductShop.MainWindow"
+        Title="ProductShop">
+    <Grid>
+        <StackPanel Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="15">
+                <TextBlock Text="Логин" HorizontalAlignment="Center"/>
+                <TextBox x:Name="LoginField" Width="250" Height="30"/>    
+            </StackPanel>
+            <StackPanel Margin="15">
+                <TextBlock Text="Пароль" HorizontalAlignment="Center"/>
+                <TextBox x:Name="PasswordField" Width="250" Height="30"/>    
+            </StackPanel>
+            
+            <Button x:Name="LoginBtn" Content="Войти" Width="150" Margin="10" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="GuestBtn" Content="Войти в качестве гостя" Width="190" Margin="10" FontSize="12" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>    
+        </StackPanel>
+    </Grid>
+</Window>

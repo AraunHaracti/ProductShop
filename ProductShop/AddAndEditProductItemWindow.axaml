@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ProductShop.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ProductShop.AddAndEditProductItemWindow"
+        x:DataType="vm:AddAndEditProductItemViewModel"
+        Title="AddAndEditProductItemWindow">
+    <Window.DataContext>
+        <vm:AddAndEditProductItemViewModel/> 
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Название"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Описание"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Производитель"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Поставщик"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Категория"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Единицы измерения"/>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Цена"/>
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="Количество"/>
+        <Button Grid.Row="9" Grid.Column="0" Content="Сохранить" Command="{Binding SaveProduct}" Click="ExitSaveBtn_OnClick"/>
+        
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding Product.ProductPhoto}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Product.ProductName}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Product.ProductDescription}"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Manufacturers}" SelectedItem="{Binding ItemManufacturer, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Providers}" SelectedItem="{Binding ItemProvider, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding ProductCategories}" SelectedItem="{Binding ItemProductCaegory, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding Units}" SelectedItem="{Binding ItemUnit, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Product.ProductPrice}"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Product.ProductCount}"/>
+        <Button Grid.Row="9" Grid.Column="1" Content="Отмена" Click="ExitBtn_OnClick"/>
+        
+        </Grid>
+</Window>

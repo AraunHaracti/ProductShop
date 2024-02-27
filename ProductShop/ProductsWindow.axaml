@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ut="clr-namespace:ProductShop.Utils"
         xmlns:vm="clr-namespace:ProductShop.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:DataType="vm:ProductsViewModel"
@@ -32,17 +33,39 @@
       <TextBlock Text="LOGO" HorizontalAlignment="Center" Foreground="Red"/>
     </Border>    
     <Border Grid.Row="1" Grid.Column="0">
-      <Grid x:Name="ActionWithProductsGrid" Background="Brown">
+      <StackPanel x:Name="ActionWithProductsGrid" Background="Brown">
+        <StackPanel>
+          <TextBox Text="{Binding SearchString, Mode=TwoWay}" Watermark="Поиск..."/>
+          <Border BorderThickness="2" CornerRadius="10">
+            <StackPanel>
+              <Label Content="Сортировка"/>
+              <RadioButton GroupName="Sort" IsChecked="True" Content="Возрастание" Command="{Binding SortItems}" CommandParameter="{x:Static ut:SortEnum.Asc}"/>
+              <RadioButton GroupName="Sort" Content="Убывание" Command="{Binding SortItems}" CommandParameter="{x:Static ut:SortEnum.Desc}"/>
+            </StackPanel>
+          </Border>
+          <StackPanel>
+            <Label Content="Производитель"/>
+            <ComboBox ItemsSource="{Binding Manufacturers}" SelectedIndex="{Binding SelectedManufacturerIndex, Mode=TwoWay}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>  
+          </StackPanel>
+          
+        </StackPanel>
+        
         <Button x:Name="AddBtn" Content="Добавить" Click="AddBtn_OnClick" Width="200"/>
-        <Button x:Name="EditBtn" Content="Редактировать" Click="EditBtn_OnClick" Width="200"/>
-      </Grid>
+        <Button x:Name="Exit" Content="Выход" Click="ExitBtn_OnClick" Width="200"/>
+      </StackPanel>
       
     </Border>
     <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-      <ListBox x:Name="ProductsList" HorizontalAlignment="Center" ItemsSource="{Binding ProductsList}" >
+      <ListBox x:Name="ProductsList" HorizontalAlignment="Center" ItemsSource="{Binding ProductsListOnView}">
         <ListBox.ItemTemplate>
           <DataTemplate>
-            <Grid Background="Aquamarine">
+            <Grid>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="4*"/>
@@ -52,14 +75,14 @@
                 <Image Source="{Binding ProductPhoto}"/>
               </Border>
               <Border Grid.Column="1" Grid.Row="1" Margin="10">
-                <StackPanel Background="Coral">
+                <StackPanel>
                   <TextBlock Text="{Binding ProductName}" FontSize="18" />
                   <TextBlock Text="{Binding ProductDescription}" FontSize="18" MaxLines=""/>
                   <TextBlock Text="{Binding ProductManufacturer}" FontSize="18"/>
                   <TextBlock Text="{Binding ProductPrice}" FontSize="18"/>
                 </StackPanel>
               </Border>
-              <Border Grid.Column="2" Background="Chartreuse" Margin="10">
+              <Border Grid.Column="2" Margin="10">
                 <TextBlock Text="{Binding ProductCount}" FontSize="20" FontFamily="Arial" TextAlignment="Center" VerticalAlignment="Center"/>
               </Border>
             </Grid>

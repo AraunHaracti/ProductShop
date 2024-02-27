@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="AddAndEditProductItemWindow.axaml" value="ProductShop.csproj" />
         <entry key="AddProductWindow.axaml" value="ProductShop.csproj" />
         <entry key="EditProductWindow.axaml" value="ProductShop.csproj" />
         <entry key="MainWindow.axaml" value="ProductShop.csproj" />

@@ -20,11 +20,11 @@ public class Database : IDisposable
     
     private MySqlConnector.MySqlConnectionStringBuilder _connectionString = new MySqlConnectionStringBuilder()
     {
-        Server = "localhost",
+        Server = "10.10.1.24",
         Port = 3306,
         Database = "pro1_12",
-        UserID = "root",
-        Password = "1234"
+        UserID = "user_01",
+        Password = "user01pro"
     };
 
     public Database()
@@ -37,6 +37,13 @@ public class Database : IDisposable
     {
         _command = new MySqlCommand(sql, _connection);
         return _command.ExecuteReader();
+    }
+    
+    public int SetData(string sql)
+    {
+        _command = new MySqlCommand(sql, _connection);
+        _command.ExecuteNonQuery();
+        return (int) _command.LastInsertedId;
     }
     
     private void Open()

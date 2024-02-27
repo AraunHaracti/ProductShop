@@ -17,6 +17,7 @@
                 <TextBlock Text="Пароль" HorizontalAlignment="Center"/>
                 <TextBox x:Name="PasswordField" Width="250" Height="30"/>    
             </StackPanel>
+            <TextBlock x:Name="ErrorMessage" IsVisible="False" HorizontalAlignment="Center" Foreground="Red"/>
             
             <Button x:Name="LoginBtn" Content="Войти" Width="150" Margin="10" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
             <Button x:Name="GuestBtn" Content="Войти в качестве гостя" Width="190" Margin="10" FontSize="12" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>    

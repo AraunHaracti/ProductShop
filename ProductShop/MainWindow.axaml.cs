@@ -24,50 +24,56 @@ public partial class MainWindow : Window
 
     private void OpenProductWindowWithAccount(object? obj, RoutedEventArgs e)
     {
-        if (LoginField.Text == null || PasswordField.Text == null)
+        if (LoginField.Text != null || PasswordField.Text != null)
         {
-            return;
-        }
-        
-        string sql = $"SELECT " +
-                     $"User.ID, " +
-                     $"User.RoleID, " +
-                     $"User.LastName, " +
-                     $"User.FirstName, " +
-                     $"User.MiddleName, " +
-                     $"User.Login, " +
-                     $"User.Password " +
-                     $"FROM User " +
-                     $"WHERE User.Login = '{LoginField.Text}' " +
-                     $"AND User.Password = '{PasswordField.Text}'";
+            string sql = $"SELECT " +
+                         $"User.ID, " +
+                         $"User.RoleID, " +
+                         $"User.LastName, " +
+                         $"User.FirstName, " +
+                         $"User.MiddleName, " +
+                         $"User.Login, " +
+                         $"User.Password " +
+                         $"FROM User " +
+                         $"WHERE User.Login = '{LoginField.Text}' " +
+                         $"AND User.Password = '{PasswordField.Text}'";
 
-        User account = null;
+            User account = null;
         
-        using (var db = new Database())
-        {
-            var reader = db.GetData(sql);
-            while (reader.Read() && reader.HasRows)
+            using (var db = new Database())
             {
-                account = new User()
+                var reader = db.GetData(sql);
+                while (reader.Read() && reader.HasRows)
                 {
-                    Id = reader.GetInt32("ID"),
-                    RoleId = reader.GetInt32("RoleID"),
-                    LastName = reader.GetString("LastName"),
-                    FirstName = reader.GetString("FirstName"),
-                    MiddleName = reader.GetString("MiddleName"),
-                    Login = reader.GetString("Login"),
-                    Password = reader.GetString("Password")
-                };
+                    account = new User()
+                    {
+                        Id = reader.GetInt32("ID"),
+                        RoleId = reader.GetInt32("RoleID"),
+                        LastName = reader.GetString("LastName"),
+                        FirstName = reader.GetString("FirstName"),
+                        MiddleName = reader.GetString("MiddleName"),
+                        Login = reader.GetString("Login"),
+                        Password = reader.GetString("Password")
+                    };
+                }
+            }
+            if (account != null)
+            {
+                var window = ProductsWindow.GetInstance(account);
+                window.Show();
+                this.Close();
+                return;
             }
         }
 
-        if (account == null)
-        {
-            return;
-        }
-        
-        var window = ProductsWindow.GetInstance(account);
-        window.Show();
-        this.Close();
+        TextBlock messageField = this.FindControl<TextBlock>("ErrorMessage");
+
+        messageField.IsVisible = true;
+        messageField.Text = "Login error";
+
+
+
+
+
     }
 }

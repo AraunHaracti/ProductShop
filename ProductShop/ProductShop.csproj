@@ -12,12 +12,12 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.7" />
         <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.7" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.7" />
         <PackageReference Include="MySqlConnector" Version="2.3.5" />
-        <PackageReference Include="SukiUI" Version="5.3.0" />
     </ItemGroup>
 
 
@@ -25,24 +25,24 @@
       <None Remove="Src\picture.png" />
       <AvaloniaResource Include="Assets\picture.png" />
       <None Remove="Src\B111C5.jpg" />
-      <None Include="Assets\B111C5.JPEG" />
+      <AvaloniaResource Include="Assets\B111C5.JPEG" />
       <None Remove="Src\E112C6.jpg" />
-      <AvaloniaResource Include="Assets\E112C6.jpg" />
+      <AvaloniaResource Include="Assets\E112C6.JPG" />
       <None Remove="Src\K839K3.jpg" />
-      <AvaloniaResource Include="Assets\K839K3.jpg" />
+      <AvaloniaResource Include="Assets\K839K3.JPG" />
       <None Remove="Src\L293S9.jpg" />
-      <AvaloniaResource Include="Assets\L293S9.jpg" />
+      <AvaloniaResource Include="Assets\L293S9.JPG" />
       <None Remove="Src\M112C8.jpg" />
-      <AvaloniaResource Include="Assets\M112C8.jpg" />
+      <AvaloniaResource Include="Assets\M112C8.JPG" />
       <None Remove="Src\M294G9.jpg" />
-      <AvaloniaResource Include="Assets\M294G9.jpg" />
+      <AvaloniaResource Include="Assets\M294G9.JPG" />
       <None Remove="Src\M398S9.jpg" />
-      <AvaloniaResource Include="Assets\M398S9.jpg" />
+      <AvaloniaResource Include="Assets\M398S9.JPG" />
       <None Remove="Src\N283K3.jpg" />
-      <AvaloniaResource Include="Assets\N283K3.jpg" />
+      <AvaloniaResource Include="Assets\N283K3.JPG" />
       <None Remove="Src\S384K2.jpg" />
-      <AvaloniaResource Include="Assets\S384K2.jpg" />
+      <AvaloniaResource Include="Assets\S384K2.JPG" />
       <None Remove="Src\T238C7.jpg" />
-      <AvaloniaResource Include="Assets\T238C7.jpg" />
+      <AvaloniaResource Include="Assets\T238C7.JPG" />
     </ItemGroup>
 </Project>
